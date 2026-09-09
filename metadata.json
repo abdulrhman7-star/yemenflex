@@ -1,0 +1,6 @@
+{
+  "name": "يمن فلکس YemenFlex",
+  "description": "يمن فلکس (YemenFlex) - منصة ترفيهية متكاملة لمشاهدة أحدث الأفلام والمسلسلات بجودات متعددة وسيرفرات سريعة",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
