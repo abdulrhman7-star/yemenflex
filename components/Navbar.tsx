@@ -297,6 +297,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 p-1.5 rounded-full hover:bg-neutral-800/80 border border-neutral-800 transition"
               >
                 {currentUser.photoURL ? (
+                  // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
                   <img
                     src={currentUser.photoURL}
                     alt={currentUser.displayName || 'User'}

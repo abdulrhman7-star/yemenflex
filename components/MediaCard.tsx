@@ -84,6 +84,7 @@ export default function MediaCard({ item }: MediaCardProps) {
           </div>
         )}
 
+        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
         <img
           src={item.poster || 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600'}
           alt={item.title}

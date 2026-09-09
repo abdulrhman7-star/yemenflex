@@ -121,6 +121,7 @@ export default function HeroSlider({ items }: HeroSliderProps) {
     >
       {/* Background Backdrop Image with smooth fade */}
       <div className="absolute inset-0">
+        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
         <img
           key={current.id}
           src={current.banner || current.poster}

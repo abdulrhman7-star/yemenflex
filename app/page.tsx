@@ -53,11 +53,11 @@ export default function HomePage() {
       {/* زر معلوماتي في الأعلى للوصول السريع */}
       <div className="flex justify-end">
         <Link
-          href="/info"
+          href="/worldcinema"
           className="flex items-center gap-2 px-4 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl text-xs font-semibold border border-neutral-800 transition shadow-md active:scale-95"
         >
           <User className="w-4 h-4 text-red-500" />
-          <span>معلوماتي</span>
+          <span>الصفحة العالمية</span>
         </Link>
       </div>
 
