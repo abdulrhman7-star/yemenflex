@@ -173,11 +173,11 @@ export default function WorldCinemaPage() {
     };
 
     return (
-        <div dir="rtl" style={{ minHeight: '100vh', background: '#070707', color: '#fff', fontFamily: 'Inter, system-ui, sans-serif', overflowX: 'hidden' }}>
+        <div dir="rtl" className="min-h-screen bg-[#070707] text-white font-sans overflow-x-hidden">
             {/* Toast Container */}
-            <div style={{ position: 'fixed', top: '76px', left: '16px', zIndex: 9999, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="fixed top-[76px] left-4 z-[9999] flex flex-col gap-2">
                 {toasts.map(t => (
-                    <div key={t.id} style={{ background: '#181818', border: '1px solid rgba(255,255,255,.09)', borderRight: '4px solid #e50914', borderRadius: '12px', padding: '12px 16px', fontSize: '13px', fontWeight: 600 }}>
+                    <div key={t.id} className="bg-[#181818] border border-white/10 border-r-4 border-r-[#e50914] rounded-xl px-4 py-3 text-[13px] font-semibold">
                         {t.message}
                     </div>
                 ))}
@@ -185,24 +185,24 @@ export default function WorldCinemaPage() {
 
             {/* Trailer Modal */}
             {trailerKey && (
-                <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '900px', aspectRatio: '16/9', background: '#000', borderRadius: '12px', overflow: 'hidden' }}>
-                        <button onClick={() => setTrailerKey(null)} style={{ position: 'absolute', top: '-36px', right: 0, background: '#e50914', color: '#fff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', border: 'none' }}>✕</button>
-                        <iframe src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`} style={{ width: '100%', height: '100%', border: 'none' }} allowFullScreen />
+                <div className="fixed inset-0 bg-black/92 z-[9999] flex items-center justify-center p-4">
+                    <div className="relative w-full max-w-[900px] aspect-video bg-black rounded-xl overflow-hidden">
+                        <button onClick={() => setTrailerKey(null)} className="absolute -top-9 right-0 bg-[#e50914] text-white w-8 h-8 rounded-full cursor-pointer border-none">✕</button>
+                        <iframe src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`} className="w-full h-full border-none" allowFullScreen />
                     </div>
                 </div>
             )}
 
             {/* Sidebar */}
             {isSidebarOpen && (
-                <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.75)', zIndex: 1100 }} onClick={() => setIsSidebarOpen(false)}>
-                    <aside style={{ position: 'fixed', top: 0, right: 0, width: '280px', maxWidth: '80vw', height: '100vh', background: '#111', borderLeft: '1px solid rgba(255,255,255,.09)', zIndex: 1200, padding: '20px', overflowY: 'auto' }} onClick={(e) => e.stopPropagation()}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', paddingBottom: '12px', borderBottom: '1px solid rgba(255,255,255,.09)' }}>
-                            <span style={{ fontWeight: 'bold' }}>📁 التصنيفات</span>
-                            <button onClick={() => setIsSidebarOpen(false)} style={{ color: '#aaa', cursor: 'pointer', background: 'none', border: 'none', fontSize: '22px' }}>✕</button>
+                <div className="fixed inset-0 bg-black/75 z-[1100]" onClick={() => setIsSidebarOpen(false)}>
+                    <aside className="fixed top-0 right-0 w-[280px] max-w-[80vw] h-screen bg-[#111] border-l border-white/10 z-[1200] p-5 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center mb-5 pb-3 border-b border-white/10">
+                            <span className="font-bold">📁 التصنيفات</span>
+                            <button onClick={() => setIsSidebarOpen(false)} className="text-[#aaa] cursor-pointer bg-none border-none text-[22px]">✕</button>
                         </div>
                         {GENRES.map(g => (
-                            <div key={g.id} onClick={() => { setSelectedGenre(String(g.id)); setIsSidebarOpen(false); }} style={{ padding: '14px 16px', borderRadius: '12px', background: '#181818', color: '#ddd', fontSize: '14px', cursor: 'pointer', marginBottom: '8px' }}>
+                            <div key={g.id} onClick={() => { setSelectedGenre(String(g.id)); setIsSidebarOpen(false); }} className="py-3.5 px-4 rounded-xl bg-[#181818] text-[#ddd] text-[14px] cursor-pointer mb-2">
                                 {g.name}
                             </div>
                         ))}
@@ -211,65 +211,65 @@ export default function WorldCinemaPage() {
             )}
 
             {/* Header */}
-            <header style={{ position: 'sticky', top: 0, zIndex: 1000, background: 'rgba(7,7,7,.95)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,.09)' }}>
-                <div style={{ width: 'min(1400px, calc(100% - 24px))', margin: 'auto', height: '64px', display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'space-between' }}>
+            <header className="sticky top-0 z-[1000] bg-[#070707]/95 backdrop-blur-2xl border-b border-white/10">
+                <div className="w-[min(1400px,calc(100%-24px))] mx-auto h-16 flex items-center gap-2 justify-between">
                     
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <button onClick={() => setIsSidebarOpen(true)} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,.09)', color: '#fff', padding: '8px 10px', borderRadius: '10px', cursor: 'pointer' }}>☰</button>
+                    <div className="flex items-center gap-2">
+                        <button onClick={() => setIsSidebarOpen(true)} className="bg-transparent border border-white/10 text-white p-2.5 rounded-[10px] cursor-pointer">☰</button>
                         
-                        <a href="#" onClick={(e) => { e.preventDefault(); handleResetToHome(); }} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '18px', fontWeight: 900, textDecoration: 'none', color: '#fff' }}>
-                            <span style={{ width: '32px', height: '32px', borderRadius: '8px', display: 'grid', placeItems: 'center', background: '#e50914', fontSize: '14px' }}>▶</span>
-                            <span>movies<span style={{ color: '#e50914' }}>io</span></span>
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleResetToHome(); }} className="flex items-center gap-1.5 text-[18px] font-black no-underline text-white">
+                            <span className="w-8 h-8 rounded-lg grid place-items-center bg-[#e50914] text-[14px]">▶</span>
+                            <span>movies<span className="text-[#e50914]">io</span></span>
                         </a>
 
-                        <Link href="/" style={{ textDecoration: 'none', display: 'none', '@media (min-width: 640px)': { display: 'block' } } as any}>
-                            <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.09)', color: '#fff', padding: '6px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}>
+                        <Link href="/" className="no-underline hidden sm:block">
+                            <button className="bg-white/5 border border-white/10 text-white px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer">
                                 🏠 الرئيسية
                             </button>
                         </Link>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ display: 'none', gap: '8px', '@media (min-width: 768px)': { display: 'flex' } } as any}>
-                            <button onClick={handleResetToHome} style={{ color: '#aaa', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 700 }}>الرئيسية</button>
-                            <button onClick={() => setMediaType('movie')} style={{ color: mediaType === 'movie' ? '#fff' : '#aaa', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 700 }}>أفلام</button>
-                            <button onClick={() => setMediaType('tv')} style={{ color: mediaType === 'tv' ? '#fff' : '#aaa', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 700 }}>مسلسلات</button>
+                    <div className="flex items-center gap-2">
+                        <div className="hidden md:flex gap-2">
+                            <button onClick={handleResetToHome} className="text-[#aaa] bg-none border-none cursor-pointer text-xs font-bold">الرئيسية</button>
+                            <button onClick={() => setMediaType('movie')} className={`bg-none border-none cursor-pointer text-xs font-bold ${mediaType === 'movie' ? 'text-white' : 'text-[#aaa]'}`}>أفلام</button>
+                            <button onClick={() => setMediaType('tv')} className={`bg-none border-none cursor-pointer text-xs font-bold ${mediaType === 'tv' ? 'text-white' : 'text-[#aaa]'}`}>مسلسلات</button>
                         </div>
                         
                         <input 
                             value={searchQuery} 
                             onChange={(e) => setSearchQuery(e.target.value)} 
                             placeholder="ابحث..." 
-                            style={{ width: '130px', sm: {width: '200px'}, height: '38px', padding: '0 10px', border: '1px solid rgba(255,255,255,.09)', borderRadius: '10px', background: '#111', color: '#fff', fontSize: '13px', outline: 'none' }} 
+                            className="w-[130px] sm:w-[200px] h-[38px] px-2.5 border border-white/10 rounded-[10px] bg-[#111] text-white text-[13px] outline-none" 
                         />
                     </div>
                 </div>
             </header>
 
-            <main style={{ width: 'min(1400px, calc(100% - 24px))', margin: 'auto', padding: '16px 0' }}>
+            <main className="w-[min(1400px,calc(100%-24px))] mx-auto py-4">
                 {/* Hero */}
-                <section style={{ position: 'relative', padding: '20px 0 10px 0', marginBottom: '10px' }}>
-                    <h1 style={{ fontSize: '26px', sm: {fontSize: '36px'}, fontWeight: 900, marginBottom: '8px' }}>عالم السينما <span style={{ color: '#e50914' }}>بدون حدود</span></h1>
-                    <p style={{ color: '#bbb', fontSize: '13px', sm: {fontSize: '15px'} }}>شاهد مسلسلاتك من حيث توقفت، مع تشغيل تلقائي للحلقات، بأقوى سيرفرات عالمية وبدون تقطيع.</p>
+                <section className="relative pt-5 pb-2.5 mb-2.5">
+                    <h1 className="text-[26px] sm:text-[36px] font-black mb-2">عالم السينما <span className="text-[#e50914]">بدون حدود</span></h1>
+                    <p className="text-[#bbb] text-[13px] sm:text-[15px]">شاهد مسلسلاتك من حيث توقفت، مع تشغيل تلقائي للحلقات، بأقوى سيرفرات عالمية وبدون تقطيع.</p>
                 </section>
 
                 {/* Filters */}
-                <div style={{ background: '#181818', border: '1px solid rgba(255,255,255,.09)', borderRadius: '12px', padding: '12px', margin: '12px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', sm: {gridTemplateColumns: 'repeat(4, 1fr)'}, gap: '8px' }}>
-                    <select value={mediaType} onChange={(e) => setMediaType(e.target.value)} style={{ padding: '8px', background: '#111', color: '#fff', borderRadius: '8px', border: '1px solid rgba(255,255,255,.09)', fontSize: '13px' }}>
+                <div className="bg-[#181818] border border-white/10 rounded-xl p-3 my-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <select value={mediaType} onChange={(e) => setMediaType(e.target.value)} className="p-2 bg-[#111] text-white rounded-lg border border-white/10 text-[13px]">
                         <option value="movie">🎬 أفلام</option>
                         <option value="tv">📺 مسلسلات</option>
                     </select>
-                    <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} style={{ padding: '8px', background: '#111', color: '#fff', borderRadius: '8px', border: '1px solid rgba(255,255,255,.09)', fontSize: '13px' }}>
+                    <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} className="p-2 bg-[#111] text-white rounded-lg border border-white/10 text-[13px]">
                         <option value="">جميع التصنيفات</option>
                         {GENRES.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
                     </select>
-                    <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)} style={{ padding: '8px', background: '#111', color: '#fff', borderRadius: '8px', border: '1px solid rgba(255,255,255,.09)', fontSize: '13px' }}>
+                    <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)} className="p-2 bg-[#111] text-white rounded-lg border border-white/10 text-[13px]">
                         <option value="">جميع السنوات</option>
                         <option value="2026">2026</option>
                         <option value="2025">2025</option>
                         <option value="2024">2024</option>
                     </select>
-                    <select value={selectedSort} onChange={(e) => setSelectedSort(e.target.value)} style={{ padding: '8px', background: '#111', color: '#fff', borderRadius: '8px', border: '1px solid rgba(255,255,255,.09)', fontSize: '13px' }}>
+                    <select value={selectedSort} onChange={(e) => setSelectedSort(e.target.value)} className="p-2 bg-[#111] text-white rounded-lg border border-white/10 text-[13px]">
                         <option value="popularity.desc">🔥 الأكثر شعبية</option>
                         <option value="vote_average.desc">⭐ الأعلى تقييماً</option>
                         <option value="primary_release_date.desc">🆕 الأحدث</option>
@@ -278,28 +278,28 @@ export default function WorldCinemaPage() {
 
                 {/* Detail Panel */}
                 {isPlayerActive && selectedMedia && (
-                    <div style={{ margin: '16px 0', padding: '16px', border: '1px solid rgba(255,255,255,.09)', borderRadius: '16px', background: '#171717' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', md: {flexDirection: 'row'}, gap: '16px' }}>
-                            <div style={{ display: 'flex', gap: '12px' }}>
+                    <div className="my-4 p-4 border border-white/15 rounded-2xl bg-[#171717]">
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <div className="flex gap-3">
                                 {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-                                <img src={selectedMedia.poster_path ? `${IMAGE_BASE}${selectedMedia.poster_path}` : ''} style={{ width: '110px', height: '165px', sm: {width: '140px', height: '210px'}, objectFit: 'cover', borderRadius: '10px', flexShrink: 0 }} />
-                                <div style={{ flex: 1 }}>
-                                    <h2 style={{ fontSize: '20px', sm: {fontSize: '24px'}, marginBottom: '6px', fontWeight: 900 }}>{selectedMedia.title || selectedMedia.name}</h2>
-                                    <p style={{ color: '#bbb', fontSize: '12px', sm: {fontSize: '13px'}, lineHeight: '1.6', marginBottom: '10px', display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{selectedMedia.overview}</p>
-                                    <button onClick={() => { setIsPlayerActive(false); setPlayerUrl(''); }} style={{ background: '#333', color: '#fff', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', border: 'none', fontSize: '12px' }}>إغلاق المشغل</button>
+                                <img src={selectedMedia.poster_path ? `${IMAGE_BASE}${selectedMedia.poster_path}` : ''} className="w-[110px] h-[165px] sm:w-[140px] sm:h-[210px] object-cover rounded-[10px] shrink-0" />
+                                <div className="flex-1">
+                                    <h2 className="text-[20px] sm:text-[24px] mb-1.5 font-black">{selectedMedia.title || selectedMedia.name}</h2>
+                                    <p className="text-[#bbb] text-[12px] sm:text-[13px] leading-relaxed mb-2.5 line-clamp-4">{selectedMedia.overview}</p>
+                                    <button onClick={() => { setIsPlayerActive(false); setPlayerUrl(''); }} className="bg-[#333] text-white px-3 py-1.5 rounded-md cursor-pointer border-none text-xs">إغلاق المشغل</button>
                                 </div>
                             </div>
                                 
                             {selectedMedia.mediaType === 'tv' && (
-                                <div style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: '10px', width: '100%' }}>
-                                    <div style={{ display: 'flex', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-                                        <select value={selectedSeason} onChange={(e) => loadEpisodes(selectedMedia.id, Number(e.target.value))} style={{ padding: '6px 10px', background: '#111', color: '#fff', borderRadius: '8px', fontSize: '13px', border: '1px solid rgba(255,255,255,.09)' }}>
+                                <div className="mt-2.5 border-t border-white/10 pt-2.5 w-full">
+                                    <div className="flex gap-2 mb-2 flex-wrap">
+                                        <select value={selectedSeason} onChange={(e) => loadEpisodes(selectedMedia.id, Number(e.target.value))} className="py-1.5 px-2.5 bg-[#111] text-white rounded-lg text-[13px] border border-white/10">
                                             {seasons.map((s: any) => <option key={s.season_number} value={s.season_number}>الموسم {s.season_number}</option>)}
                                         </select>
                                     </div>
-                                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'nowrap', overflowX: 'auto', paddingBottom: '6px' }}>
+                                    <div className="flex gap-1.5 flex-nowrap overflow-x-auto pb-1.5">
                                         {episodes.map((ep: any) => (
-                                            <button key={ep.episode_number} onClick={() => { setSelectedEpisode(ep.episode_number); setupPlayerUrl('tv', selectedMedia, selectedSeason, ep.episode_number, serverProvider); }} style={{ padding: '6px 12px', background: selectedEpisode === ep.episode_number ? '#e50914' : '#222', color: '#fff', borderRadius: '6px', cursor: 'pointer', border: 'none', fontSize: '12px', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                            <button key={ep.episode_number} onClick={() => { setSelectedEpisode(ep.episode_number); setupPlayerUrl('tv', selectedMedia, selectedSeason, ep.episode_number, serverProvider); }} className={`py-1.5 px-3 rounded-md cursor-pointer border-none text-xs whitespace-nowrap shrink-0 ${selectedEpisode === ep.episode_number ? 'bg-[#e50914] text-white' : 'bg-[#222] text-white'}`}>
                                                 حلقة {ep.episode_number}
                                             </button>
                                         ))}
@@ -309,10 +309,10 @@ export default function WorldCinemaPage() {
                         </div>
 
                         {/* Player Section */}
-                        <div style={{ marginTop: '16px', border: '1px solid rgba(255,255,255,.09)', borderRadius: '12px', overflow: 'hidden', background: '#000' }}>
-                            <div style={{ padding: '8px 12px', background: '#111', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <span style={{ fontSize: '12px', fontWeight: 800 }}>مشغل moviesio Pro</span>
-                                <select value={serverProvider} onChange={handleServerChange} style={{ padding: '4px 8px', background: '#222', color: '#fff', borderRadius: '6px', border: 'none', fontSize: '12px' }}>
+                        <div className="mt-4 border border-white/10 rounded-xl overflow-hidden bg-black">
+                            <div className="py-2 px-3 bg-[#111] flex justify-between items-center">
+                                <span className="text-xs font-extrabold">مشغل moviesio Pro</span>
+                                <select value={serverProvider} onChange={handleServerChange} className="py-1 px-2 bg-[#222] text-white rounded-md border-none text-xs">
                                     <option value="vidsrc">🚀 سيرفر 1</option>
                                     <option value="multiembed">⚡ سيرفر 2</option>
                                     <option value="2embed">🎬 سيرفر 3</option>
@@ -321,8 +321,8 @@ export default function WorldCinemaPage() {
                                     <option value="vidlink">🔥 سيرفر 6</option>
                                 </select>
                             </div>
-                            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
-                                <iframe src={playerUrl} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }} allowFullScreen />
+                            <div className="relative w-full aspect-video">
+                                <iframe src={playerUrl} className="absolute inset-0 w-full h-full border-0" allowFullScreen />
                             </div>
                         </div>
                     </div>
@@ -330,32 +330,24 @@ export default function WorldCinemaPage() {
 
                 {/* Grid Results - Responsive Layout */}
                 {loading ? (
-                    <div style={{ textAlign: 'center', padding: '40px', color: '#aaa', fontSize: '14px' }}>جاري التحميل...</div>
+                    <div className="text-center py-10 text-[#aaa] text-[14px]">جاري التحميل...</div>
                 ) : (
-                    <div style={{ 
-                        display: 'grid', 
-                        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', 
-                        '@media (min-width: 480px)': { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' },
-                        '@media (min-width: 768px)': { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' },
-                        '@media (min-width: 1024px)': { gridTemplateColumns: 'repeat(5, minmax(0, 1fr))' },
-                        '@media (min-width: 1280px)': { gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' },
-                        gap: '10px' 
-                    } as any}>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-2.5">
                         {movies.map(item => {
                             const type = item.media_type || mediaType;
                             const title = item.title || item.name || 'بدون عنوان';
                             const poster = item.poster_path ? `${IMAGE_BASE}${item.poster_path}` : 'https://via.placeholder.com/300x450';
                             return (
-                                <div key={item.id} onClick={() => openMedia(item.id, type)} style={{ borderRadius: '10px', background: '#121212', border: '1px solid rgba(255,255,255,.06)', cursor: 'pointer', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                                    <div style={{ aspectRatio: '2/3', overflow: 'hidden' }}>
+                                <div key={item.id} onClick={() => openMedia(item.id, type)} className="rounded-[10px] bg-[#121212] border border-white/5 cursor-pointer overflow-hidden flex flex-col">
+                                    <div className="aspect-[2/3] overflow-hidden">
                                         {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-                                        <img src={poster} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                        <img src={poster} className="w-full h-full object-cover" />
                                     </div>
-                                    <div style={{ padding: '8px' }}>
-                                        <h3 style={{ fontSize: '12px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 700 }}>{title}</h3>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px', fontSize: '10px', color: '#888' }}>
+                                    <div className="p-2">
+                                        <h3 className="text-xs whitespace-nowrap overflow-hidden text-ellipsis font-bold">{title}</h3>
+                                        <div className="flex justify-between mt-1 text-[10px] text-[#888]">
                                             <span>{type === 'tv' ? 'مسلسل' : 'فيلم'}</span>
-                                            <span style={{ color: '#ffd700' }}>★ {Number(item.vote_average || 0).toFixed(1)}</span>
+                                            <span className="text-[#ffd700]">★ {Number(item.vote_average || 0).toFixed(1)}</span>
                                         </div>
                                     </div>
                                 </div>
